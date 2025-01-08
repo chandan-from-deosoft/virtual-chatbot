@@ -82,6 +82,7 @@ submitNameBtn.addEventListener("click", async () => {
   submitNameBtn.disabled = true;
   nameInput.value = ""; // Clear the input field
 
+  
   if (inputValue) {
     // Check if input is numeric to determine if it's an appointment ID
     if (!isNaN(inputValue)) {
