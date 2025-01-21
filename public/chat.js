@@ -79,6 +79,15 @@ async function showOptions(options) {
 
 submitNameBtn.addEventListener("click", async () => {
   const inputValue = nameInput.value.trim();
+  //change
+  // if (/^\d+$/.test(inputValue)) { 
+  //   alert("Please enter only letters (no special characters) for this field."); 
+  //   return; 
+  // } else if (!/^[a-zA-Z]+$/.test(inputValue)) { 
+  //   alert("Please enter only letters (no special characters) for this field."); 
+  //   return; 
+  // }
+
   submitNameBtn.disabled = true;
   nameInput.value = ""; // Clear the input field
 
