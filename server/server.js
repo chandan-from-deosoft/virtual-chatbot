@@ -77,46 +77,10 @@ const getOptionsData = async (req, res) => {
   }
 };
 
-// const getAppointmentStatus = async (req, res) => {
-//   const { appointment_id } = req.body;
-
-//   // Validate appointment_id
-//   if (!appointment_id) {
-//     return res.status(400).json({ error: "Invalid Appointment ID" });
-//   }
-
-//   try {
-//     const result = await pool.query(
-//       `SELECT
-//         a.appointment_id,
-//         a.patient_name,
-//         d.name AS doctor_name,
-//         a.appointment_time,
-//         a.status
-//       FROM
-//         Appointments a
-//       JOIN
-//         Doctors d ON a.doctor_id = d.doctor_id
-//       WHERE
-//         a.appointment_id = $1`,
-//       [appointment_id]
-//     );
-
-//     // Check if appointment exists
-//     if (result.rowCount === 0) {
-//       return res.status(404).json({ error: "Appointment not found" });
-//     }
-
-//     // Return the appointment data
-//     res.json(result.rows[0]);
-//   } catch (err) {
-//     console.error(err.message);
-//     res.status(500).send("Server Error");
-//   }
-// };
 
 const getAppointmentStatus = async (req, res) => {
-  const { appointment_id } = req.body;
+  const appointment_id = req.query.appointmentId;
+  
 
   // Validate appointment_id
   if (!appointment_id) {
@@ -163,7 +127,7 @@ const getAppointmentStatus = async (req, res) => {
 
 // Define API endpoints
 
-app.post("/appointment-status", getAppointmentStatus);
+app.get("/appointment-status/", getAppointmentStatus);
 
 app.get("/chat/welcome", getWelcomeData);
 app.get("/chats/message/get/:chatId", getChatData);
